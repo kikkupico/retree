@@ -1,6 +1,6 @@
 {
   "name": "retree",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A minimal, extensible and customizable tree view UI component for react.",
   "main": "dist.js",
   "scripts": {
