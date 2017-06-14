@@ -1,10 +1,13 @@
 {
   "name": "retree",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A minimal, extensible and customizable tree view UI component for react.",
   "main": "dist.js",
   "scripts": {
-    "test": "npm test"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "react-scripts test"
   },
   "repository": {
     "type": "git",
@@ -34,11 +37,5 @@
     "react-dom": "^15.5.0",
     "react-redux": "^5.0.5",
     "redux": "^3.5.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "test": "react-scripts test"
   }
 }
