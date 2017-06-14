@@ -2,6 +2,7 @@ import React from 'react'
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
+import {collapsible, checkable} from './plugins'
 
 import './Node.css'
 
@@ -91,109 +92,3 @@ function mapStateToProps(state, ownProps) {
 
 const ConnectedNode = connect(mapStateToProps, actions)(Node)
 export default ConnectedNode
-
-
-function navBar() { //WORKS
-    return function(Child) {
-      return class extends Component {         
-         render() {
-           return (
-             <div>
-               <h2>Hello this is the navigation bar</h2>
-               <Child {...this.props} />
-             </div>
-           )
-        }
-     }
- }
-}
-
-function withSubheading(type, heading) { //WORKS
-    return function(Child) {
-      return class extends Component {         
-         render() {
-           return (
-             <div>
-             {type==='h3' ? <h3>{heading}</h3>: heading}
-               <Child {...this.props} />
-             </div>
-           )
-        }
-     }
- }
-}
-
-function withIcon(icon) { //WORKS
-    return function(Child) {
-      return class extends Component {
-
-         render() {
-           return (
-             <span>
-             <span> {icon}</span>
-               <Child {...this.props} />
-             </span>
-           )
-        }
-     }
- }
-}
-
-function checkable() {
-    return function(Child) {
-      return class extends Component {
-        handleCheckedClick = () => {
-          const { toggleChecked, id } = this.props
-          toggleChecked(id)
-        }
-
-         render() {
-           return (
-             <span>
-             <input type="checkbox"
-              checked={this.props.checked}
-              onClick={this.handleCheckedClick}
-              />
-               <Child {...this.props} />
-             </span>
-           )
-        }
-     }
- }
-}
-
-function collapsible() {
-    return function(Child) {
-      return class extends Component {
-        handleCollapseClick = () => {
-            const { toggleCollapse, id } = this.props
-            toggleCollapse(id)
-          }
-
-         render() {
-           return (
-             <span>
-             {this.props.childIds.length ? <span className="tree-view-arrow" onClick={this.handleCollapseClick}>{ this.props.collapsed ? "▼": "▶"}</span> : <span className="tree-view-children-leaf"> </span>}
-               <Child {...this.props} />
-             </span>
-           )
-        }
-     }
- }
-}
-
-
-/*
-var Enhance = ComposedComponent => class extends Component { //DOES NO WORK
-  constructor(props) {
-    super(props);
-    this.state = { data: null };
-  }
-  componentDidMount() {
-    this.setState({ data: 'Hello' });
-  }
-  render() {
-    return <ComposedComponent {...this.props} data={this.state.data} />;
-  }
-};
-*/
