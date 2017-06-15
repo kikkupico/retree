@@ -1,8 +1,8 @@
 {
   "name": "retree",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A minimal, extensible and customizable tree view UI component for react.",
-  "main": "dist.js",
+  "main": "retree.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -24,6 +24,12 @@
     "url": "https://github.com/vramakin/retree/issues"
   },
   "homepage": "https://github.com/vramakin/retree#readme",
+  "peerDependencies": {
+    "react": "^15.5.0",
+    "react-dom": "^15.5.0",
+    "react-redux": "^5.0.5",
+    "redux": "^3.5.2"
+  },
   "devDependencies": {
     "deep-freeze": "0.0.1",
     "enzyme": "^2.8.2",
@@ -33,9 +39,5 @@
     "redux-devtools-extension": "^2.13.2"
   },
   "dependencies": {
-    "react": "^15.5.0",
-    "react-dom": "^15.5.0",
-    "react-redux": "^5.0.5",
-    "redux": "^3.5.2"
   }
 }

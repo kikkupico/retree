@@ -2,6 +2,36 @@
 
 A minimal, extensible and customizable tree view UI component for react.
 
+## Usage
+
+```javascript
+import React from 'react';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
+import {generateTree} from 'retree' //sample tree generator
+import Node from 'retree'
+import '../node_modules/retree/retree.css'
+
+const tree = generateTree()
+const store = createStore(reducer, tree)
+
+class App extends React.Component {
+  render() {
+    return (      
+        <Provider store={store}>
+          <Node id={0} />
+        </Provider>      
+    );
+  }
+}
+
+export default App;
+````
+
+## Running the demo
+
+
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app), which provides a simple way to start React projects with no build configuration needed.
 
 Projects built with Create-React-App include support for ES6 syntax, as well as several unofficial / not-yet-final forms of Javascript syntax such as Class Properties and JSX.  See the list of [language features and polyfills supported by Create-React-App](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#supported-language-features-and-polyfills) for more information.
