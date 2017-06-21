@@ -1,67 +1,53 @@
-# retree
+# retree [![npm version](https://badge.fury.io/js/retree.svg)](https://www.npmjs.com/package/react-treeview)
 
 A minimal, extensible and customizable tree view UI component for react.
+
+[Demo](https://vramakin.github.io/retree)
+
+## Installation
+
+```sh
+npm install --save retree
+```
+
 
 ## Usage
 
 ```javascript
-import React from 'react';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import reducer from './reducers'
-import {generateTree} from 'retree' //sample tree generator
-import Node from 'retree'
-import '../node_modules/retree/retree.css'
+import React, { Component } from 'react';
+import ReTree from 'retree';
+import {prepareData, getChecked} from 'retree';
+import '../node_modules/retree/tree-view.css';
 
-const tree = generateTree()
-const store = createStore(reducer, tree)
+class App extends Component {
 
-class App extends React.Component {
+  state = {
+    data: prepareData({label:'Pets', id:0, children:[{label:'Cats', id:4, children:[{label:'Bubbles', id:5}, {label:'Riddles', id:6}]}, {label:'Dogs', id:1, children:[{label:'Scooby', id:2}, {label:'Snowy', id:3}]},]})
+  }
+
+  onChangeTree = (newData) => this.setState({data:newData});
+  
   render() {
     return (      
-        <Provider store={store}>
-          <Node id={0} />
-        </Provider>      
+      <div>     
+       <ReTree data={this.state.data} onChange={this.onChangeTree} ></ReTree>
+      <h5>Checked Items are...</h5>
+      <ol> {Array.from(getChecked(this.state.data, new Set())).map( (i,k) => <li key={k}> {i.label} </li>)}</ol>
+      </div>      
     );
   }
 }
 
 export default App;
-````
 
-## Running the demo
+```
 
+## Development
 
-This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app), which provides a simple way to start React projects with no build configuration needed.
+Build: `npm install && npm run build`
 
-Projects built with Create-React-App include support for ES6 syntax, as well as several unofficial / not-yet-final forms of Javascript syntax such as Class Properties and JSX.  See the list of [language features and polyfills supported by Create-React-App](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#supported-language-features-and-polyfills) for more information.
+Demo: `npm install && npm start`
 
-## Available Scripts
+## License
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+ISC.

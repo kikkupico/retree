@@ -9,3 +9,8 @@ docs
 # misc
 .DS_Store
 npm-debug.log
+src
+scripts
+examples
+config
+sample-minimal.png
