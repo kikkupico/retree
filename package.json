@@ -1,6 +1,6 @@
 {
   "name": "retree",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "peerDependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
